@@ -1,2 +1,8 @@
-sync test2-1
-sync test2-2
+---
+title: Sync Test
+description: 워크플로 테스트 포스트
+pubDate: 2025-10-08
+updatedDate: 2025-10-08
+---
+
+sync test2
