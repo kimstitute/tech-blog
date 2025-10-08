@@ -3,13 +3,26 @@ import type { HTMLAttributes } from 'astro/types';
 
 type Props = HTMLAttributes<'a'>;
 
-const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const { href, class: className, ...props } = Astro.props as Props;
+
+const rawHref = href ? String(href) : '/';
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '/');
+
+const normalizedPath =
+	rawHref === '/' ? '' : rawHref.replace(/^\//, '').replace(/\/+$/, '').trim();
+
+const normalizedHref =
+	/^https?:|^mailto:|^tel:/.test(rawHref) || rawHref.startsWith('#')
+		? rawHref
+		: `${base}${normalizedPath}` || base;
+
+const pathname = Astro.url.pathname.replace(base, '').replace(/\/+$/, '');
+const currentTop = pathname.split('/')[0] ?? '';
+const targetTop = normalizedPath.split('/')[0] ?? '';
+const isActive = normalizedPath === '' ? pathname === '' : targetTop === currentTop;
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a href={normalizedHref} class:list={[className, { active: isActive }]} {...(props as Props)}>
 	<slot />
 </a>
 <style>
