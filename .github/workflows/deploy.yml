@@ -1,4 +1,4 @@
-name: Merge content-sync and Deploy Astro site
+name: Sync blog content and Deploy Astro site
 
 on:
   push:
@@ -16,6 +16,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Checkout content-sync branch
+        uses: actions/checkout@v4
+        with:
+          ref: content-sync
+          path: content-sync
+          fetch-depth: 0
           token: ${{ secrets.PAT_TOKEN }}
 
       - name: Configure Git
@@ -23,13 +32,21 @@ jobs:
           git config --global user.name "kimstitute"
           git config --global user.email "kimstitute@naver.com"
 
-      - name: Merge content-sync into main
+      - name: Sync content into src/content/blog
         run: |
-          echo "🔹 Fetching latest branches..."
-          git fetch origin content-sync
-          echo "🔹 Merging content-sync → main..."
-          git merge origin/content-sync --allow-unrelated-histories -m "Auto-merge from content-sync"
-          git push origin main
+          mkdir -p src/content/blog
+          rsync -av --delete --exclude '.git/' content-sync/ src/content/blog/
+
+      - name: Commit and push changes (if any)
+        run: |
+          if git status --porcelain src/content/blog | grep -q .
+          then
+            git add src/content/blog
+            git commit -m "chore: sync blog content from content-sync"
+            git push origin main
+          else
+            echo "No content updates detected; skipping commit."
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -38,9 +55,7 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          echo "🔹 Installing dependencies..."
           npm ci
-          echo "🔹 Building Astro site..."
           npm run build
 
       - name: Deploy to GitHub Pages
