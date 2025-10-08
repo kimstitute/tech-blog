@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { CONTACT_EMAIL, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
 <!doctype html>
@@ -12,38 +12,178 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main class="landing">
+			<section class="hero">
+				<p class="hero__eyebrow">AI Developer Blog</p>
+				<h1>{SITE_TITLE}</h1>
+				<p class="hero__description">
+					AI 개발자 김민상 블로그입니다. 실험에서 얻은 통찰, 제품 적용 경험, 그리고 함께 성장하는 개발 노트를 아카이브합니다.
+				</p>
+				<div class="hero__actions">
+					<a class="button button--primary" href="/blog">블로그 읽기</a>
+					<a class="button button--ghost" href={`mailto:${CONTACT_EMAIL}`}>메일 보내기</a>
+				</div>
+			</section>
+
+			<section class="highlights">
+				<h2>What you'll find here</h2>
+				<div class="highlight-grid">
+					<article class="card">
+						<h3>LLM &amp; 생성형 AI</h3>
+						<p>프롬프트 엔지니어링, 파인튜닝, 멀티모달 모델 실험기를 기록합니다.</p>
+					</article>
+					<article class="card">
+						<h3>MLOps &amp; 프로덕션</h3>
+						<p>실제 서비스에 적용하며 겪은 운영 전략과 자동화 파이프라인을 공유합니다.</p>
+					</article>
+					<article class="card">
+						<h3>학습 노트</h3>
+						<p>논문 리뷰와 사이드 프로젝트 진행 과정을 꾸준히 정리합니다.</p>
+					</article>
+				</div>
+			</section>
+
+			<section class="cta">
+				<h2>Let's collaborate</h2>
+				<p>{SITE_DESCRIPTION}</p>
+				<a class="button button--primary" href={`mailto:${CONTACT_EMAIL}`}>프로젝트 제안하기</a>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.landing {
+		width: min(960px, calc(100% - 2em));
+		margin: 0 auto;
+		padding: 4em 0 5em;
+		display: flex;
+		flex-direction: column;
+		gap: 4em;
+	}
+	.hero {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+		padding: 3.5em 3em;
+		border-radius: 24px;
+		background: linear-gradient(135deg, rgba(35, 55, 255, 0.08), rgba(29, 78, 216, 0.12));
+		box-shadow: 0 20px 60px rgba(15, 18, 25, 0.08);
+	}
+	.hero__eyebrow {
+		margin: 0;
+		font-size: 0.9em;
+		font-weight: 600;
+		color: rgba(15, 18, 25, 0.6);
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+	}
+	.hero h1 {
+		margin: 0;
+		font-size: clamp(2.5rem, 5vw, 3.5rem);
+		line-height: 1.1;
+		color: rgb(var(--black));
+	}
+	.hero__description {
+		margin: 0;
+		font-size: 1.1em;
+		color: rgba(15, 18, 25, 0.75);
+		max-width: 60ch;
+	}
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75em;
+	}
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.75em 1.6em;
+		border-radius: 999px;
+		font-weight: 600;
+		text-decoration: none;
+		transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+	}
+	.button--primary {
+		background: var(--accent);
+		color: white;
+		box-shadow: 0 18px 30px rgba(35, 55, 255, 0.18);
+	}
+	.button--primary:hover {
+		background: var(--accent-dark);
+		transform: translateY(-2px);
+		box-shadow: 0 22px 36px rgba(35, 55, 255, 0.25);
+	}
+	.button--ghost {
+		background: white;
+		color: var(--accent);
+		border: 1px solid rgba(35, 55, 255, 0.2);
+	}
+	.button--ghost:hover {
+		background: rgba(35, 55, 255, 0.08);
+		transform: translateY(-2px);
+	}
+	.highlights {
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
+	}
+	.highlights h2 {
+		margin: 0;
+		font-size: 1.8rem;
+		color: rgb(var(--black));
+	}
+	.highlight-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 1.5em;
+	}
+	.card {
+		padding: 1.75em;
+		border-radius: 18px;
+		background: white;
+		box-shadow: 0 14px 30px rgba(15, 18, 25, 0.05);
+		display: flex;
+		flex-direction: column;
+		gap: 0.75em;
+	}
+	.card h3 {
+		margin: 0;
+		font-size: 1.2rem;
+	}
+	.card p {
+		margin: 0;
+		font-size: 0.95rem;
+		color: rgba(15, 18, 25, 0.7);
+	}
+	.cta {
+		text-align: center;
+		padding: 3em;
+		border-radius: 22px;
+		background: linear-gradient(135deg, rgba(35, 55, 255, 0.12), rgba(15, 18, 25, 0.08));
+		box-shadow: 0 20px 50px rgba(15, 18, 25, 0.08);
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		align-items: center;
+	}
+	.cta h2 {
+		margin: 0;
+		font-size: 1.9rem;
+	}
+	.cta p {
+		margin: 0;
+		max-width: 60ch;
+		color: rgba(15, 18, 25, 0.75);
+	}
+	@media (max-width: 720px) {
+		.hero {
+			padding: 2.5em 1.75em;
+		}
+		.cta {
+			padding: 2.5em 1.5em;
+		}
+	}
+</style>
