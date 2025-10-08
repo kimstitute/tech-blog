@@ -1,9 +1,10 @@
 name: Sync blog content and Deploy Astro site
 
 on:
-  push:
-    branches:
-      - content-sync
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - content_sync
 
 jobs:
   deploy:
