@@ -6,6 +6,7 @@ import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
 import robotsTxt from 'astro-robots-txt';
 import { defineConfig } from 'astro/config';
+import fs from 'fs-extra';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkToc from 'remark-toc';
@@ -58,36 +59,34 @@ export default defineConfig({
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {
-        jpeg: {
-          quality: 80
-        },
-        png: {
-          quality: 80
-        },
-        webp: {
-          quality: 80
-        },
-        avif: {
-          quality: 65 // Reduce AVIF quality to speed up processing
-        }
+        jpeg: { quality: 80 },
+        png: { quality: 80 },
+        webp: { quality: 80 },
+        avif: { quality: 65 } // Reduce AVIF quality to speed up processing
       }
     },
-    // Use faster formats for development environment
-    dev: {
-      format: 'webp' // Use WebP instead of AVIF in development environment
-    }
+    dev: { format: 'webp' } // Use WebP instead of AVIF in development
   },
   vite: {
     build: {
-      assetsInlineLimit: 4096, // Inline images smaller than 4kb as base64
+      assetsInlineLimit: 4096 // Inline images smaller than 4kb as base64
     },
-    // Optimize development server
     server: {
-      watch: {
-        usePolling: false
-      },
-      hmr: {
-        overlay: true
+      watch: { usePolling: false },
+      hmr: { overlay: true }
+    }
+  },
+
+  // ✅ 이미지 자동 복사 훅 추가
+  hooks: {
+    'astro:build:done': async ({ dir }) => {
+      const srcAssets = new URL('./src/content/blog/assets', import.meta.url);
+      const distAssets = new URL('./dist/assets', import.meta.url);
+      try {
+        await fs.copy(srcAssets, distAssets);
+        console.log('✅ Copied blog assets to dist/assets');
+      } catch (err) {
+        console.error('⚠️ Failed to copy assets:', err);
       }
     }
   }
