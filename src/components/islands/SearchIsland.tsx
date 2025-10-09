@@ -2,6 +2,15 @@ import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react'
 // Import types only for Fuse.js which will be dynamically loaded at runtime
 import type { FuseResult, IFuseOptions } from 'fuse.js';
 
+// Helper function to create paths with base path
+const createPath = (path: string): string => {
+  // Get base path from site configuration
+  const basePath = '/tech-blog/'; // This should match the base path in astro.config.mjs
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  const cleanBasePath = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+  return `${cleanBasePath}/${cleanPath}`;
+};
+
 interface SearchArticle {
   title: string;
   description: string;
@@ -41,7 +50,7 @@ const SearchResultCard = React.memo(({ post, formatDate }: {
         {/* Title area */}
         <div className="mb-3">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors line-clamp-2">
-            <a href={`/blog/${post.slug}`}>{post.title}</a>
+            <a href={createPath(`/blog/${post.slug}`)}>{post.title}</a>
           </h2>
         </div>
         
@@ -58,7 +67,7 @@ const SearchResultCard = React.memo(({ post, formatDate }: {
             {post.tags && post.tags.slice(0, 3).map(tag => (
               <a
                 key={tag}
-                href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                href={createPath(`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`)}
                 className="text-xs px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded-full hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
               >
                 {tag}
@@ -212,7 +221,7 @@ const SearchIsland = ({
       
       try {
         // 1. Load search data
-        const response = await fetch(`/data/search-data.json?v=${dataTimestamp}`);
+        const response = await fetch(createPath(`/data/search-data.json?v=${dataTimestamp}`));
         if (!response.ok) {
           throw new Error('Failed to fetch search data');
         }
