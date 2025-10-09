@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# references
+product_whoami/
+
+# plans
+implementaion-checklist.md
+simplified-integration-plan.md
+technical-migration-guide.md

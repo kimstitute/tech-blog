@@ -1,0 +1,52 @@
+{
+  "site": {
+    "title": "AI 개발자 김민상 블로그",
+    "description": "AI 개발자 김민상의 기술 블로그. AI, 머신러닝, 소프트웨어 개발에 대한 경험과 지식을 공유합니다.",
+    "url": "https://kimstitute.github.io/tech-blog/",
+    "author": "김민상",
+    "location": "대한민국",
+    "email": "kimstitute@naver.com",
+    "logo": "/favicon.svg",
+    "homeTitle": "김민상의 기술 블로그",
+    "homeSubtitle": "AI 개발자의 기술 블로그. AI, 머신러닝, 소프트웨어 개발에 대한 경험과 지식을 공유합니다.",
+    "blogSubtitle": "AI, 머신러닝, 소프트웨어 개발에 대한 기술적 통찰과 경험을 공유합니다.",
+    "projectSubtitle": "AI 관련 프로젝트와 개발 작업 포트폴리오.",
+    "brandTitle": "김민상"
+  },
+  "giscus": {
+    "enabled": false,
+    "repo": "",
+    "repoId": "",
+    "category": "",
+    "categoryId": "",
+    "mapping": "pathname",
+    "strict": "0",
+    "theme": "preferred_color_scheme",
+    "reactionsEnabled": true,
+    "emitMetadata": false,
+    "inputPosition": "top",
+    "lang": "ko",
+    "loading": "lazy"
+  },
+  "seo": {
+    "openGraph": {
+      "twitterCreator": "@kimstitute",
+      "defaultImageWidth": 1200,
+      "defaultImageHeight": 630
+    },
+    "analytics": {
+      "googleAnalyticsId": "",
+      "baiduAnalyticsId": ""
+    }
+  },
+  "social": {
+    "github": "https://github.com/kimstitute"
+  },
+  "features": {
+    "darkMode": true,
+    "tableOfContents": true,
+    "readingTime": true,
+    "search": true,
+    "comments": false
+  }
+} 

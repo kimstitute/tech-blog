@@ -1,0 +1,76 @@
+name: Sync blog content and Deploy Astro site
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - content_sync
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Checkout content-sync branch
+        uses: actions/checkout@v4
+        with:
+          ref: content-sync
+          path: content-sync
+          fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "kimstitute"
+          git config --global user.email "kimstitute@naver.com"
+
+      - name: Sync content into src/content/blog
+        run: |
+          mkdir -p src/content/blog
+          rsync -av --delete --exclude '.git/' content-sync/ src/content/blog/
+
+      - name: Commit and push changes (if any)
+        run: |
+          if git status --porcelain src/content/blog | grep -q .
+          then
+            git add src/content/blog
+            git commit -m "chore: sync blog content from content-sync"
+            git push origin main
+          else
+            echo "No content updates detected; skipping commit."
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload dist artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
