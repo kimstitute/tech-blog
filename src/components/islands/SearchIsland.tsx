@@ -157,7 +157,7 @@ const SearchIsland = ({
       const url = new URL(window.location.href);
       url.searchParams.set('q', query);
       // Always use the search page with base path
-      const searchPath = '/tech-blog/search';
+      const searchPath = createPath('/search');
       history.pushState({}, '', searchPath + url.search);
     }
   }, []);
@@ -171,7 +171,7 @@ const SearchIsland = ({
     const url = new URL(window.location.href);
     url.searchParams.delete('q');
     // Always use the search page with base path
-    const searchPath = '/tech-blog/search';
+    const searchPath = createPath('/search');
     history.pushState({}, '', searchPath + url.search);
   }, []);
 
