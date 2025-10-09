@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import ThreeColumnLayout from '@layouts/ThreeColumnLayout.astro';
 import ArticleListItem from '@components/ArticleListItem.astro';
-import { formatPageTitle, getSiteConfig } from '@utils/config';
+import { formatPageTitle, getSiteConfig, createPath } from '@utils/config';
 
 export async function getStaticPaths({ paginate }) {
   const allPosts = await getCollection('blog', ({ data }) => {
@@ -58,7 +58,7 @@ const siteConfig = getSiteConfig();
   <div class="mb-8">
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-xl font-semibold">Popular Tags</h2>
-      <a href="/tags" class="text-sm text-indigo-500 hover:text-indigo-600 flex items-center">
+      <a href={createPath('/tags')} class="text-sm text-indigo-500 hover:text-indigo-600 flex items-center">
         View all
         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
@@ -68,7 +68,7 @@ const siteConfig = getSiteConfig();
     <div class="flex flex-wrap gap-3">
       {topTags.map(({ tag, count }) => (
         <a
-          href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+          href={createPath(`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`)}
           class="text-md px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors shadow-sm"
         >
           {tag}
@@ -100,7 +100,7 @@ const siteConfig = getSiteConfig();
       <nav class="inline-flex rounded shadow-sm" aria-label="Pagination">
         {currentPage > 1 && (
           <a
-            href={currentPage === 2 ? '/blog' : `/blog/${currentPage - 1}`}
+            href={createPath(currentPage === 2 ? '/blog' : `/blog/${currentPage - 1}`)}
             class="px-3 py-2 rounded-l-md border border-r-0 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
           >
             Previous
@@ -108,7 +108,7 @@ const siteConfig = getSiteConfig();
         )}
         {Array.from({ length: lastPage }, (_, i) => i + 1).map(pageNum => (
           <a
-            href={pageNum === 1 ? '/blog' : `/blog/${pageNum}`}
+            href={createPath(pageNum === 1 ? '/blog' : `/blog/${pageNum}`)}
             class:list={[
               'px-3 py-2 border border-slate-300 dark:border-slate-600',
               pageNum === currentPage
@@ -121,7 +121,7 @@ const siteConfig = getSiteConfig();
         ))}
         {currentPage < lastPage && (
           <a
-            href={`/blog/${currentPage + 1}`}
+            href={createPath(`/blog/${currentPage + 1}`)}
             class="px-3 py-2 rounded-r-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
           >
             Next

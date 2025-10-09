@@ -1,4 +1,6 @@
 ---
+import { createPath } from '@utils/config';
+
 export interface Props {
   title: string;
   description: string;
@@ -16,8 +18,7 @@ const { title, description, pubDate, updatedDate, tags, author, location, slug }
 const formattedDate = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: 'short',
-  day: '2-digit',
-  formatter: 'short'
+  day: '2-digit'
 }).format(pubDate);
 
 const hasUpdated = updatedDate && updatedDate > pubDate;
@@ -34,7 +35,7 @@ const hasUpdated = updatedDate && updatedDate > pubDate;
     <div>
       <!-- Title -->
       <h2 class="text-xl font-bold mb-2 leading-snug">
-        <a href={`/blog/${slug}`} class="hover:text-indigo-600 dark:hover:text-indigo-400">
+        <a href={createPath(`/blog/${slug}`)} class="hover:text-indigo-600 dark:hover:text-indigo-400">
           {title}
         </a>
       </h2>
@@ -44,7 +45,7 @@ const hasUpdated = updatedDate && updatedDate > pubDate;
         <div class="flex flex-wrap gap-1.5 mb-3">
           {tags.map(tag => (
             <a 
-              href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+              href={createPath(`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`)}
               class="text-xs text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400"
             >
               #{tag}
@@ -65,7 +66,7 @@ const hasUpdated = updatedDate && updatedDate > pubDate;
         </span>
         
         <a 
-          href={`/blog/${slug}`}
+          href={createPath(`/blog/${slug}`)}
           class="text-indigo-600 dark:text-indigo-400 hover:underline"
         >
           Read more →
