@@ -5,3 +5,5 @@ pubDate: 2025-10-09
 updatedDate: 2025-10-09
 ---
 sync test4
+
+![](./assets/gorapaduck.jpg)
