@@ -5,7 +5,7 @@ import type { FuseResult, IFuseOptions } from 'fuse.js';
 // Helper function to create paths with base path
 const createPath = (path: string): string => {
   // Get base path from site configuration
-  const basePath = '/'; // This should match the base path in astro.config.mjs
+  const basePath = '/tech-blog/'; // This should match the base path in astro.config.mjs
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   const cleanBasePath = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
   return `${cleanBasePath}/${cleanPath}`;

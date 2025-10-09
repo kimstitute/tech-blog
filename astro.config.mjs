@@ -12,8 +12,8 @@ import remarkToc from 'remark-toc';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://kimstitute.github.io/',
-  base: '/',
+  site: 'https://kimstitute.github.io/tech-blog/',
+  base: '/tech-blog/',
   integrations: [
     tailwind(),
     mdx({
