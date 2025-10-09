@@ -156,12 +156,9 @@ const SearchIsland = ({
     if (updateUrl) {
       const url = new URL(window.location.href);
       url.searchParams.set('q', query);
-      // Get the current pathname and ensure it has the base path
-      let currentPath = url.pathname;
-      if (!currentPath.startsWith('/tech-blog/')) {
-        currentPath = `/tech-blog${currentPath.startsWith('/') ? currentPath : '/' + currentPath}`;
-      }
-      history.pushState({}, '', currentPath + url.search);
+      // Always use the search page with base path
+      const searchPath = '/tech-blog/search';
+      history.pushState({}, '', searchPath + url.search);
     }
   }, []);
 
@@ -173,12 +170,9 @@ const SearchIsland = ({
     // Update URL
     const url = new URL(window.location.href);
     url.searchParams.delete('q');
-    // Get the current pathname and ensure it has the base path
-    let currentPath = url.pathname;
-    if (!currentPath.startsWith('/tech-blog/')) {
-      currentPath = `/tech-blog${currentPath.startsWith('/') ? currentPath : '/' + currentPath}`;
-    }
-    history.pushState({}, '', currentPath + url.search);
+    // Always use the search page with base path
+    const searchPath = '/tech-blog/search';
+    history.pushState({}, '', searchPath + url.search);
   }, []);
 
   // Handle search input - Use useCallback to cache function
