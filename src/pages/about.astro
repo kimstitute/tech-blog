@@ -2,6 +2,7 @@
 import ThreeColumnLayout from '@layouts/ThreeColumnLayout.astro';
 import { getCollection } from 'astro:content';
 import { formatPageTitle, getSiteConfig, getSocialConfig } from '@utils/config';
+import { createPath } from '@utils/config';
 
 // Get all blog posts and projects to extract existing tags
 const allPosts = await getCollection('blog');
@@ -21,7 +22,7 @@ function hasMatchingTag(skill) {
 // Function to create a tag URL
 function getTagUrl(skill) {
   const normalizedSkill = skill.toLowerCase().replace(/\s+/g, '-');
-  return `/tags/${normalizedSkill}`;
+  return createPath(`/tags/${normalizedSkill}`);
 }
 
 // Technical skills grouped by category (김민상 프로필에 맞게 업데이트)
