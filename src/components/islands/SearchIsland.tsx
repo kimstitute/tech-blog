@@ -156,7 +156,9 @@ const SearchIsland = ({
     if (updateUrl) {
       const url = new URL(window.location.href);
       url.searchParams.set('q', query);
-      history.pushState({}, '', url);
+      // Ensure the URL uses the correct base path
+      const newPath = createPath(url.pathname) + url.search;
+      history.pushState({}, '', newPath);
     }
   }, []);
 
@@ -168,7 +170,9 @@ const SearchIsland = ({
     // Update URL
     const url = new URL(window.location.href);
     url.searchParams.delete('q');
-    history.pushState({}, '', url);
+    // Ensure the URL uses the correct base path
+    const newPath = createPath(url.pathname) + url.search;
+    history.pushState({}, '', newPath);
   }, []);
 
   // Handle search input - Use useCallback to cache function

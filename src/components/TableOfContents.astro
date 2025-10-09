@@ -74,7 +74,10 @@ const toc = headings.filter(h => h.depth >= 2 && h.depth <= 3);
     document.querySelectorAll('.toc a[href^="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
+        const href = link.getAttribute('href');
+        if (!href) return;
+        
+        const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
         
         if (targetElement) {
@@ -84,7 +87,9 @@ const toc = headings.filter(h => h.depth >= 2 && h.depth <= 3);
           });
           
           // Update URL without jumping
-          history.pushState(null, null, `#${targetId}`);
+          const currentPath = window.location.pathname;
+          const newPath = currentPath.startsWith('/tech-blog') ? currentPath : `/tech-blog${currentPath}`;
+          history.pushState('', '', `${newPath}#${targetId}`);
         }
       });
     });
