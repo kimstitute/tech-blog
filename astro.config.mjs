@@ -77,7 +77,7 @@ export default defineConfig({
     }
   },
 
-  // ✅ 이미지 자동 복사 훅 추가
+  // 이미지 자동 복사 훅 추가
   hooks: {
     'astro:build:done': async ({ dir }) => {
       const srcAssets = new URL('./src/content/blog/assets', import.meta.url);
