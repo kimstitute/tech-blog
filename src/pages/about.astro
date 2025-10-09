@@ -24,35 +24,39 @@ function getTagUrl(skill) {
   return `/tags/${normalizedSkill}`;
 }
 
-// Technical skills grouped by category
+// Technical skills grouped by category (김민상 프로필에 맞게 업데이트)
 const skillsData = [
   {
     category: "Programming Languages",
-    skills: ["Java", "SQL", "JavaScript", "Python"]
+    skills: ["Python", "Java", "Kotlin", "C/C++", "JavaScript", "SQL", "Lua"]
   },
   {
     category: "Frameworks/Libraries",
-    skills: ["Spring Boot", "Spring Cloud", "MyBatis", "Hibernate", "React"]
+    skills: ["PyTorch", "Transformers", "LangChain", "FastAPI", "Flask", "React"]
   },
   {
     category: "Databases",
-    skills: ["MySQL", "Oracle", "Redis", "MongoDB", "ElasticSearch"]
+    skills: ["Pinecone", "Oracle", "Firestore", "MySQL"]
   },
   {
     category: "Middleware",
-    skills: ["Kafka", "RabbitMQ", "Nginx", "Zuul", "Gateway"]
+    skills: ["WebSocket", "gRPC", "Nginx"]
   },
   {
     category: "Tools/Platforms",
-    skills: ["Docker", "Kubernetes", "Jenkins", "Git", "Maven", "Jira"]
+    skills: ["AWS EC2", "Docker", "GitHub Actions", "Android Studio", "Ollama"]
   },
   {
     category: "Architecture/Methodologies",
-    skills: ["Microservice Architecture", "Distributed Systems", "DDD Design", "Agile Development", "CI/CD"]
+    skills: ["RAG", "SFT/RFT(PPO·RLAIF)", "MLOps(Basic)", "CI/CD", "Microservices"]
   },
   {
-    category: "Payment Domain",
-    skills: ["Payment Gateway", "Clearing & Settlement Systems", "Smart Routing", "Risk Control Systems", "Cross-border Payments", "Multi-currency Payments"]
+    category: "AI/ML & RL",
+    skills: ["Whisper", "Wav2Vec2.0", "EfficientNet", "KoBERT", "Q-learning", "A2C", "REINFORCE"]
+  },
+  {
+    category: "On-device",
+    skills: ["QNN(Llama 3.2 3B)", "Galaxy S25", "Android Foreground Service", "Room DB"]
   }
 ];
 
@@ -67,13 +71,15 @@ const socialConfig = getSocialConfig();
   
   <div class="prose dark:prose-invert prose-lg max-w-none">
     <p>
-      Welcome to my blog! This is my personal space where I share my thoughts, insights, and experiences in payment technology, system architecture, and software development.
+      안녕하세요. 한성대학교 AI응용학과 학부생 김민상입니다. 이 블로그는 제가 진행하는 SW·AI 프로젝트와 학습 기록, 산학연계 경험을 정리해 공유하는 공간입니다.
+      주 관심사는 LLM/RAG, 강화학습 기반 퀀트, 음성/비전 파이프라인, 온디바이스 추론, 그리고 백엔드 실시간 스트리밍 시스템입니다.
     </p>
     
     <h2>Personal Profile</h2>
     <p>
-      I'm Zhang Qingdong, a Senior Java Engineer and Team Leader with 9 years of experience in payment system development, specializing in cross-border payment solutions.
-      As a "Bridge Builder between Technology and Business," I combine deep fintech expertise with excellent engineering practices to create secure and reliable cross-border payment infrastructure.
+      학부에서 캡스톤디자인과 산학공동 프로젝트를 중심으로 실전형 AI·백엔드 역량을 쌓고 있습니다.
+      Qualcomm 연계 온디바이스 AI, 응급의학 특화 LLM 챗봇, RL·AI 퀀트 리서치, 딥보이스/보이스피싱 탐지 앱, 학내 공유형 LLM 웹앱, 유튜브 요약 확장 등
+      다양한 도메인의 프로젝트를 실제로 설계·구현·배포하며 재현 가능한 실험과 로그 기반 리포팅을 꾸준히 실천하고 있습니다.
     </p>
     
     <h2>Technical Skills</h2>
@@ -96,47 +102,30 @@ const socialConfig = getSocialConfig();
     </ul>
     
     <h2>Work Experience</h2>
-    <h3>Wuhan Ronghan Technology Co., Ltd. | Team Leader | Nov 2019-Present</h3>
+    <h3>학부 산학·캡스톤 프로젝트 | 팀/파트 리드 | 2024–Present</h3>
     <p>
-      Led the technical planning and architectural design for the company's cross-border payment product line, ensuring high availability and scalability.
-      Designed and implemented a microservice architecture cross-border acquiring system based on Spring Cloud, using DDD design methods to define clear domain boundaries.
-      The system supports 15 currencies and 8 international card schemes, processing over 100,000 transactions daily.
-      Built an intelligent routing decision engine based on rule engines and machine learning, reducing overall transaction costs by 18%, with 99.95% system availability during peak periods.
-    </p>
-    
-    <h3>Shanghai Kaixer Software Co., Ltd. | Senior Java Developer | Feb 2018-Nov 2019</h3>
-    <p>
-      Participated in the design and development of core modules for financial payment systems, including transaction processing, risk control, and account management.
-      Led the implementation of microservice architecture for card issuance business system reconstruction, reducing card application processing time by 40% and improving system throughput by 65%.
-      Designed and implemented a token authorization system based on OAuth2.0 and JWT for mobile payment scenarios.
-    </p>
-    
-    <h3>Beijing Csii Software Systems Co., Ltd. | Java Developer | Jul 2016-Feb 2018</h3>
-    <p>
-      Involved in the development of SPD Bank's rural B2C express payment system, new merchant express payment signing system, B2C fee settlement system, and unified cashier system.
-      Reconstructed core payment and cancellation functional modules, achieving seamless integration between rural banks and headquarters systems, handling request peaks of 200 TPS,
-      improving transaction success rate by 15% and reducing system response time by 30%.
+      기업·연계 과제를 중심으로 LLM/RAG, RL·퀀트, 음성/비전, 온디바이스 추론을 결합한 애플리케이션을 설계·구현했습니다.
+      FastAPI/Flask 기반 마이크로서비스, WebSocket 실시간 스트리밍, AWS EC2 배포, GitHub Actions 간단 CI/CD를 운영하며
+      로그·메트릭과 체크리스트를 통한 재현성과 품질을 관리했습니다.
     </p>
     
     <h2>Project Experience</h2>
-    <p>
-      I've led several significant projects, including:
-    </p>
     <ul>
-      <li><strong>Onerway Cross-border Acquiring</strong>: Built cross-border payment acquiring solutions for global e-commerce and SaaS service providers, supporting multi-currency, multi-channel, and multi-scenario payment processing</li>
-      <li><strong>Onerway Cross-border Collection</strong>: Provided overseas collection solutions for cross-border e-commerce sellers registered in mainland China/Hong Kong</li>
-      <li><strong>UnionPay International Virtual Card Project</strong>: Designed and implemented globally applicable virtual credit card standards and card issuance system for UnionPay International</li>
-      <li><strong>Unified Cashier</strong>: Integrated and reconstructed SPD Bank's online payment system, unifying multi-channel payment entry points</li>
+      <li><strong>딥보이스·보이스피싱 탐지 모바일 앱</strong>: Wav2Vec2.0·Whisper 파이프라인, 통화 녹음 실시간 처리, RAG 기반 위험도 판단, QNN(Llama 3.2 3B) 온디바이스 탑재</li>
+      <li><strong>응급의학 LLM 프레임워크</strong>: GPT-3.5 SFT + 웹 RAG 구성, Streamlit 배포로 의료 특화 질의응답 챗봇 구현</li>
+      <li><strong>감정 인식 대화 에이전트</strong>: EfficientNet 얼굴 감정 분류, RoBERTa 보상모델, GPT-2 RFT(PPO·RLAIF)로 감정 고려 답변 최적화</li>
+      <li><strong>RL·AI 퀀트 리서치</strong>: Q-learning/A2C/REINFORCE 실험 자동화, 실시간 데이터 파이프라인 및 리포트 자동 생성</li>
+      <li><strong>학내 공유형 LLM 웹앱(hsgpt)</strong>: 접근 제어·요약/검색·로그 체계 구축</li>
+      <li><strong>유튜브 요약 확장</strong>: 자막 파싱–핵심 구간 요약–플레이어 연동(자동 재생) 워크플로우 구현</li>
     </ul>
     
     <h2>Education</h2>
     <p>
-      Anhui University | Bachelor's Degree | Network Engineering | 2012-2016
+      Hansung University | B.S. in AI Applications (In Progress)
     </p>
     <ul>
-      <li>Major courses: Computer Networks, Data Structures and Algorithms, Operating Systems, Database Systems, Java Programming, Software Engineering</li>
-      <li>Received Outstanding Student Award and Outstanding Graduate honors</li>
-      <li>Selected for the Network Engineering Excellence Program, receiving small-class teaching and enterprise training</li>
+      <li>주요 과목: 인공지능, 머신러닝, 컴퓨터비전, 자연어처리, 운영체제, 데이터베이스, 소프트웨어 공학</li>
+      <li>캡스톤/산학: Qualcomm 연계 온디바이스 AI, RL·AI 퀀트, 의료 LLM/RAG, 보안 앱 개발</li>
     </ul>
     
     <h2>Contact Information</h2>
@@ -153,7 +142,7 @@ const socialConfig = getSocialConfig();
     </ul>
     
     <p>
-      Thank you for visiting my blog. I hope you find valuable content here!
+      방문해 주셔서 감사합니다. 프로젝트와 글은 계속해서 업데이트합니다.
     </p>
   </div>
-</ThreeColumnLayout> 
+</ThreeColumnLayout>
