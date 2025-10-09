@@ -138,6 +138,29 @@ export function formatPageTitle(pageTitle: string): string {
   return `${pageTitle} | ${site.title}`;
 }
 
+/**
+ * Get base path for GitHub Pages deployment
+ */
+export function getBasePath(): string {
+  const site = getSiteConfig();
+  const url = new URL(site.url);
+  return url.pathname;
+}
+
+/**
+ * Create a proper URL with base path
+ * @param path The path to append to base path
+ * @returns Full path with base path
+ */
+export function createPath(path: string): string {
+  const basePath = getBasePath();
+  // Remove leading slash from path if exists
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  // Remove trailing slash from base path if exists
+  const cleanBasePath = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+  return `${cleanBasePath}/${cleanPath}`;
+}
+
 export default {
   getConfig,
   getSiteConfig,
@@ -147,5 +170,7 @@ export default {
   getFeaturesConfig,
   getNavigationConfig,
   isFeatureEnabled,
-  formatPageTitle
-}; 
+  formatPageTitle,
+  getBasePath,
+  createPath
+};

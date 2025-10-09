@@ -2,7 +2,7 @@
 import ThemeToggle from './ThemeToggle.astro';
 import Icon from './Icon.astro';
 import { getCollection } from 'astro:content';
-import { getSiteConfig, getSocialConfig } from '@utils/config';
+import { getSiteConfig, getSocialConfig, createPath } from '@utils/config';
 
 // Get all blog posts
 const blogPosts = await getCollection('blog', ({ data }) => {
@@ -50,7 +50,7 @@ function isActiveCategory(categoryName: string): boolean {
 
 <nav class:list={["bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 h-full p-4 flex flex-col", className]}>
   <div class="py-4">
-    <a href="/" class="flex items-center gap-2 text-xl font-bold">
+    <a href={createPath('/')} class="flex items-center gap-2 text-xl font-bold">
       <Icon name="book" class="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
       <span>{siteConfig.brandTitle}</span>
     </a>
@@ -61,7 +61,7 @@ function isActiveCategory(categoryName: string): boolean {
       <h3 class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-3">Navigation</h3>
       <ul class="space-y-2">
         <li>
-          <a href="/" class:list={[
+          <a href={createPath('/')} class:list={[
             "flex items-center gap-2 p-2 rounded-lg transition-colors",
             isActiveLink('/') 
               ? "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium" 
@@ -75,7 +75,7 @@ function isActiveCategory(categoryName: string): boolean {
           </a>
         </li>
         <li>
-          <a href="/blog" class:list={[
+          <a href={createPath('/blog')} class:list={[
             "flex items-center gap-2 p-2 rounded-lg transition-colors",
             isActiveLink('/blog') 
               ? "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium" 
@@ -89,7 +89,7 @@ function isActiveCategory(categoryName: string): boolean {
           </a>
         </li>
         <li>
-          <a href="/projects" class:list={[
+          <a href={createPath('/projects')} class:list={[
             "flex items-center gap-2 p-2 rounded-lg transition-colors",
             isActiveLink('/projects') 
               ? "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium" 
@@ -103,7 +103,7 @@ function isActiveCategory(categoryName: string): boolean {
           </a>
         </li>
         <li>
-          <a href="/about" class:list={[
+          <a href={createPath('/about')} class:list={[
             "flex items-center gap-2 p-2 rounded-lg transition-colors",
             isActiveLink('/about') 
               ? "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium" 
@@ -126,7 +126,7 @@ function isActiveCategory(categoryName: string): boolean {
           {sortedCategories.map(({ name, count }) => (
             <li>
               <a 
-                href={`/categories/${name.toLowerCase().replace(/\s+/g, '-')}`} 
+                href={createPath(`/categories/${name.toLowerCase().replace(/\s+/g, '-')}`)}
                 class:list={[
                   "block p-2 rounded-lg transition-colors flex justify-between items-center",
                   isActiveCategory(name)
@@ -155,10 +155,12 @@ function isActiveCategory(categoryName: string): boolean {
         <a href={socialConfig.github} class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="GitHub">
           <Icon name="github" class="w-5 h-5" />
         </a>
-        <a href={socialConfig.linkedin} class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="LinkedIn">
-          <Icon name="linkedin" class="w-5 h-5" />
-        </a>
-        <a href="/api/rss.xml" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="RSS">
+        {(socialConfig as any).linkedin && (
+          <a href={(socialConfig as any).linkedin} class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="LinkedIn">
+            <Icon name="linkedin" class="w-5 h-5" />
+          </a>
+        )}
+        <a href={createPath('/api/rss.xml')} class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="RSS">
           <Icon name="rss" class="w-5 h-5" />
         </a>
       </div>
