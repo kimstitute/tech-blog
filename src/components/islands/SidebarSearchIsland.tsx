@@ -1,6 +1,14 @@
 import React, { useState, useRef, useCallback } from 'react';
 import type { FormEvent } from 'react';
 
+// Helper function to create paths with base path
+const createPath = (path: string): string => {
+  const basePath = '/tech-blog/';
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  const cleanBasePath = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+  return `${cleanBasePath}/${cleanPath}`;
+};
+
 interface SidebarSearchIslandProps {
   placeholder?: string;
 }
@@ -20,7 +28,7 @@ function SidebarSearchIsland({ placeholder = "Search..." }: SidebarSearchIslandP
     if (!searchQuery.trim()) return;
     
     // Redirect to search page
-    window.location.href = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
+    window.location.href = createPath(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
   }, [searchQuery]);
   
   // Handle input change - Use useCallback to cache function
@@ -50,7 +58,7 @@ function SidebarSearchIsland({ placeholder = "Search..." }: SidebarSearchIslandP
   return (
     <form 
       ref={formRef}
-      action="/search" 
+      action={createPath('/search')}
       method="get" 
       className="relative"
       onSubmit={handleSubmit}
