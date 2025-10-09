@@ -7,3 +7,5 @@ updatedDate: 2025-10-09
 sync test4
 
 ![](./assets/gorapaduck.jpg)
+
+모바일 테스트 7:01
