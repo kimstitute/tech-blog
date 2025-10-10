@@ -3,7 +3,7 @@ title: "마크다운(MarkDown) 문법 정리"
 description: "블로그 작성에 필요한 필수 마크다운(MarkDown) 문법 정리"
 pubDate: 2025-10-10
 updatedDate: 2025-10-10
-heroImage: "/blog-placeholder-1.jpg"
+heroImage: "https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg"
 tags: ["Markdown"]
 categories: ["Languages"]
 subject: "Markdown for GitHub Blog"
@@ -29,7 +29,7 @@ HTML 태그를 이용해 github 첫 글을 작성해보니 불편함이 이만�
 
 다만, 표준이 없어서 마크다운마다 미묘하게 문법이 다를 수도 있습니다.
 
-이 글에서는 github에서서 사용 가능한 문법만 정리하도록 하겠습니다.
+이 글에서는 github에서 사용 가능한 문법만 정리하도록 하겠습니다.
 
 <hr>
 
@@ -262,13 +262,13 @@ HTML에서는 아래와 같습니다. 구분선은 여전히 HTML이 더 익숙�
 | 이름  | 나이 | 직업  |
 |------|-----|------|
 | 민상 | 28  | 개발자 |
-| 혜진 | 25  | 편집자 |
+| 유진 | 25  | 편집자 |
 
 ```markdown
 | 이름  | 나이 | 직업  |
 |------|-----|------|
 | 민상 | 28  | 개발자 |
-| 혜진 | 25  | 편집자 |
+| 유진 | 25  | 편집자 |
 ```
 
 HTML에서는 아래와 같습니다.
@@ -286,7 +286,7 @@ HTML에서는 아래와 같습니다.
     <td>개발자</td>
   </tr>
   <tr>
-    <td>혜진</td>
+    <td>유진</td>
     <td>25</td>
     <td>편집자</td>
   </tr>
