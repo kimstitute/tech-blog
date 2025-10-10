@@ -1,7 +1,7 @@
 ---
 title: "마크다운(MarkDown) 문법 정리"
 description: "블로그 작성에 필요한 필수 마크다운(MarkDown) 문법 정리"
-pubDate: 2025-10-10
+pubDate: 2025-01-31
 updatedDate: 2025-10-10
 heroImage: "https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg"
 tags: ["Markdown"]
