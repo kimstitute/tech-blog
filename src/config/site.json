@@ -14,11 +14,11 @@
     "brandTitle": "김민상"
   },
   "giscus": {
-    "enabled": false,
-    "repo": "",
-    "repoId": "",
-    "category": "",
-    "categoryId": "",
+    "enabled": true,
+    "repo": "kimstitute/tech-blog",
+    "repoId": "R_kgDOP-cJGw",
+    "category": "Announcements",
+    "categoryId": "DIC_kwDOP-cJG84CweA8",
     "mapping": "pathname",
     "strict": "0",
     "theme": "preferred_color_scheme",
@@ -48,6 +48,6 @@
     "tableOfContents": true,
     "readingTime": true,
     "search": true,
-    "comments": false
+    "comments": true
   }
 } 
