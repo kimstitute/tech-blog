@@ -1,5 +1,6 @@
 ---
 import { isFeatureEnabled } from '@utils/config';
+import { createPath } from '@utils/config';
 
 export interface Props {
   headings: {
@@ -28,7 +29,7 @@ const toc = headings.filter(h => h.depth >= 2 && h.depth <= 3);
       {toc.map(heading => (
         <li class={`${heading.depth === 3 ? 'ml-4' : ''}`}>
           <a
-            href={`#${heading.slug}`}
+            href={createPath(`#${heading.slug}`)}
             class="text-sm hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors block py-1"
           >
             {heading.text}
