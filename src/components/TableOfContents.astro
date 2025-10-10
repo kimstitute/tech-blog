@@ -91,7 +91,9 @@ const toc = headings.filter(h => h.depth >= 2 && h.depth <= 3);
           //const currentPath = window.location.pathname;
           //const newPath = currentPath.startsWith('/tech-blog') ? currentPath : `/tech-blog${currentPath}`;
           //history.pushState('', '', `${newPath}#${targetId}`);
-          history.pushState('', '', `#${targetId}`);
+          const url = new URL(window.location.href);
+          url.hash = targetId;
+          history.pushState('', '', url.pathname + url.search + url.hash);
         }
       });
     });
