@@ -8,7 +8,7 @@ tags: ["Markdown"]
 categories: ["Languages"]
 subject: "Markdown for GitHub Blog"
 draft: false
-featured: true
+featured: false
 author: "김민상"
 location: "Seoul, Korea"
 ---
