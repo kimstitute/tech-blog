@@ -1,6 +1,6 @@
 ---
 import { isFeatureEnabled } from '@utils/config';
-import { createPath } from '@utils/config';
+//import { createPath } from '@utils/config';
 
 export interface Props {
   headings: {
@@ -88,9 +88,10 @@ const toc = headings.filter(h => h.depth >= 2 && h.depth <= 3);
           });
           
           // Update URL without jumping
-          const currentPath = window.location.pathname;
-          const newPath = currentPath.startsWith('/tech-blog') ? currentPath : `/tech-blog${currentPath}`;
-          history.pushState('', '', `${newPath}#${targetId}`);
+          //const currentPath = window.location.pathname;
+          //const newPath = currentPath.startsWith('/tech-blog') ? currentPath : `/tech-blog${currentPath}`;
+          //history.pushState('', '', `${newPath}#${targetId}`);
+          history.pushState('', '', `#${targetId}`);
         }
       });
     });
