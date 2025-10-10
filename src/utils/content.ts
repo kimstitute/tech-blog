@@ -17,7 +17,8 @@ export async function getHeadings(content: string) {
     let slug = text
       .toLowerCase()
       // Remove emojis and other special characters, keep Chinese characters, alphanumeric, and hyphens
-      .replace(/[^\u4e00-\u9fa5\w\s-]/g, '')
+      //.replace(/[^\u4e00-\u9fa5\w\s-]/g, '')
+      .replace(/[^\u4e00-\u9fa5\uac00-\ud7af\w\s-]/g, '')
       // Replace spaces and underscores with hyphens
       .replace(/[\s_]+/g, '-')
       // Remove leading/trailing hyphens
