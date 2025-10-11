@@ -10,5 +10,5 @@ demoUrl: https://github.com/leader-kimmiyoung/deepvoicephishing
 featured: false
 ---
 
-![](../assets/ai_capstone_ppt_title.png)
+![](../assets/ai_capstone_poster.png)
 project explanation gogo go go
