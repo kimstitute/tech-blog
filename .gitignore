@@ -27,6 +27,6 @@ pnpm-debug.log*
 product_whoami/
 
 # plans
-implementaion-checklist.md
+implementation-checklist.md
 simplified-integration-plan.md
 technical-migration-guide.md
