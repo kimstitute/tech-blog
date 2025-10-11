@@ -40,16 +40,16 @@ jobs:
           git config --global user.name "kimstitute"
           git config --global user.email "kimstitute@naver.com"
 
-      - name: Sync content into src/content/project
+      - name: Sync content into src/content/projects
         run: |
-          mkdir -p src/content/project
-          rsync -av --delete --exclude '.git/' project-sync/ src/content/project/
+          mkdir -p src/content/projects
+          rsync -av --delete --exclude '.git/' project-sync/ src/content/projects/
 
       - name: Commit and push changes (if any)
         run: |
-          if git status --porcelain src/content/project | grep -q .
+          if git status --porcelain src/content/projects | grep -q .
           then
-            git add src/content/project
+            git add src/content/projects
             git commit -m "chore: sync project content from project-sync"
             git push origin main
           else
