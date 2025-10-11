@@ -4,10 +4,10 @@ description: 실시간 통화 음성을 분석하여 딥페이크와 보이스�
 pubDate: 2025-05-30
 updatedDate: 2025-10-11
 heroImage: https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg
-tags: ["AI", "LLM", "Wav2Vec2", "Capstone"]
-repoUrl: https://github.com/copyboy/product_whoami
-demoUrl: https://portal.astro.build/themes/modern-personal-blog/
-featured: true
+tags: ["AI", "LLM", "Classification", "Android", "Fine-tuning", "On-device", "Capstone"]
+repoUrl: https://github.com/leader-kimmiyoung/deepvoicephishing
+demoUrl: ""
+featured: false
 ---
 
-project exxplanation 
+project explanation 
