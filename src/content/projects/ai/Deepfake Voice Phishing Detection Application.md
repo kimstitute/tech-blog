@@ -11,4 +11,4 @@ featured: false
 ---
 
 ![](../assets/ai_capstone_ppt_title.png)
-project explanation gogo go
+project explanation gogo go go
