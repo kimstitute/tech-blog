@@ -6,7 +6,7 @@ updatedDate: 2025-10-11
 heroImage: https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg
 tags: ["AI", "LLM", "Classification", "Qualcomm", "Android", "Fine-tuning", "On-device", "Capstone", "Deepfake", "RAG"]
 repoUrl: https://github.com/leader-kimmiyoung/deepvoicephishing
-demoUrl: ""
+demoUrl: https://github.com/leader-kimmiyoung/deepvoicephishing
 featured: false
 ---
 
