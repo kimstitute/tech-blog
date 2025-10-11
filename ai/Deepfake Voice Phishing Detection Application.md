@@ -4,10 +4,11 @@ description: 실시간 통화 음성을 분석하여 딥페이크와 보이스�
 pubDate: 2025-05-30
 updatedDate: 2025-10-11
 heroImage: https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg
-tags: ["AI", "LLM", "Classification", "Android", "Fine-tuning", "On-device", "Capstone"]
+tags: ["AI", "LLM", "Classification", "Qualcomm", "Android", "Fine-tuning", "On-device", "Capstone", "Deepfake", "RAG"]
 repoUrl: https://github.com/leader-kimmiyoung/deepvoicephishing
 demoUrl: ""
 featured: false
 ---
 
+![](../assets/ai_capstone_ppt_title.png)
 project explanation 
